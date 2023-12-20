@@ -19,7 +19,7 @@ class Square:
     @property
     def size(self):
         """Get/set the current size of the square."""
-        return (self.__size)
+        return self.__size
 
     @size.setter
     def size(self, value):
@@ -32,7 +32,7 @@ class Square:
     @property
     def position(self):
         """Get/set the current position of the square."""
-        return (self.__position)
+        return self.__position
 
     @position.setter
     def position(self, value):
@@ -45,7 +45,7 @@ class Square:
 
     def area(self):
         """Return the current area of the square."""
-        return (self.__size * self.__size)
+        return self.__size * self.__size
 
     def my_print(self):
         """Print the square with the # character."""
@@ -53,19 +53,19 @@ class Square:
             print("")
             return
 
-        [print("") for i in range(0, self.__position[1])]
-        for i in range(0, self.__size):
-            [print(" ", end="") for j in range(0, self.__position[0])]
-            [print("#", end="") for k in range(0, self.__size)]
+        [print("") for _ in range(0, self.__position[1])]
+        for _ in range(0, self.__size):
+            [print(" ", end="") for _ in range(0, self.__position[0])]
+            [print("#", end="") for _ in range(0, self.__size)]
             print("")
 
     def __str__(self):
         """Define the print() representation of a square."""
         if self.__size != 0:
-            [print("") for m in range(0, self.__position[1])]
-        for i in range(0, self.__size):
-            [print(" ", end="") for i in range(0, self.__position[0])]
-            [print("#", end="") for k in range(0, self.__size)]
+            [print("") for _ in range(0, self.__position[1])]
+        for _ in range(0, self.__size):
+            [print(" ", end="") for _ in range(0, self.__position[0])]
+            [print("#", end="") for _ in range(0, self.__size)]
             if i != self.__size - 1:
                 print("")
-        return ("")
+        return ""
