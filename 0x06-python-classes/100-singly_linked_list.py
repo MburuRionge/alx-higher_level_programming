@@ -6,7 +6,7 @@
 class Node:
     """Represent a node in a singly-linked list."""
 
-    def __init__(self, data, nex_node=None):
+    def __init__(self, data, next_node=None):
         """Initialize a new Node.
 
         Args:
@@ -19,7 +19,7 @@ class Node:
     @property
     def data(self):
         """Get/set the data of the Node."""
-        return (self.__data)
+        return self.__data
 
     @data.setter
     def data(self, value):
@@ -45,3 +45,19 @@ class SinglyLinkedList:
     def __init__(self):
         """Initialize a new SinglyLinkedList."""
         self.__head = None
+
+    def sorted_insert(self, data):
+        """Isert a anode with sorted data in the linked list."""
+        new_node = Node(data)
+
+        if self.__head is None or data < self.__head.data:
+            new_Node.next_node = self.__head
+            self.__head = new_node
+            return
+
+        current = self.__head
+        while current.next_node is not None and current.next_node.data < data:
+            current = current.next_node
+
+        new_node.next_node = current.next_node
+        current.next_node = new_node
