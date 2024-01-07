@@ -6,17 +6,13 @@ import sys
 
 def init_board(n):
     """Initialize an 'n'x'n' sized chessboard with 0's."""
-    board = []
-    [board.append([]) for i in range(n)]
-    [row.append(' ') for i in range(n) for row in board]
+    board = [[' '] * n for _ in range(n)]
     return (board)
 
 
 def board_deepcopy(board):
     """Return a deepcopy of a chessboard."""
-    if isinstance(board, list):
-        return list(map(board_deepcopy, board))
-    return (board)
+    return [row[:] for row in board]
 
 
 def get_solution(board):
@@ -43,7 +39,7 @@ def xout(board, row, col):
         board[row][c] = "x"
     # X out all backwards spots
     for c in range(col - 1, -1, -1):
-        board[r][col] = "x"
+        board[row][col] = "x"
     # X out all spots below
     for r in range(row + 1, len(board)):
         board[r][col] = "x"
@@ -62,7 +58,7 @@ def xout(board, row, col):
     for r in range(row - 1, -1, -1):
         if c < 0:
             break
-        board[r][c]
+        board[r][c] = "x"
         c -= 1
     # X out all spots diagonally up to the right
     c = col + 1
