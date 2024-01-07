@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a Rectangle class."""
 
+
 class Rectangle:
     """Represent a rectangle.
 
@@ -19,7 +20,7 @@ class Rectangle:
             width (int): The width of the new rectangle.
             height (int): The height of the new rectangle.
         """
-        type(self).number_of_instances += 1
+        Rectangle.number_of_instances += 1
         self.width = width
         self.height = height
 
@@ -48,3 +49,29 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be > 0")
         self.__height = value
+
+    def area(self):
+        """returns the area of the rectangle"""
+        return self.__width * self.height
+
+    def perimeter(self):
+        """returns the perimeter of the rectangle"""
+        if not self.width or not self.height:
+            return 0
+    	return (self.__width * 2) + (self.__height * 2)
+
+    def __str__(self):
+        """returns printable string representation of the recrangle"""
+        if not self.width or not self.height:
+            return ""
+        return ((str(self.print_symbol)  self.width + "\n") *
+                self.height)[:-1]
+
+    def __repr__(self)):
+        """returns a formal string representation of the rectangle for reproduction"""
+        return "Rectangle(" + str(self.width) + ", " + str(self.height) + ")"
+
+    def __del__(self):
+        """Print a message for every deletion of a Rectangle."""
+        print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1

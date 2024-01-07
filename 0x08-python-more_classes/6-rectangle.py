@@ -18,7 +18,7 @@ class Rectangle:
             width (int): The width of the new rectangle.
             height (int): The height of the new rectangle.
         """
-        type(self).number_of_intances += 1
+        Rectangle.number_of_intances += 1
         self.width = width
         self.height = height
 
@@ -56,20 +56,21 @@ class Rectangle:
         """returns the perimeter of the rectangle"""
         if self.__width == 0 or self.__height == 0:
             return 0
-		return (self.__width * 2) + (self.__height * 2)
+        return (self.__width * 2) + (self.__height * 2)
 
-	def __str__(self):
+    def __str__(self):
         """returns printable string representation of the recrangle"""
         string = ""
         if self.__width != 0 and self.__height != 0:
             string += "\n".join("#" * self.__width
-				for j in range(self.__height))
+                                for j in range(self.__height))
+        return atring
 
-
-    def __repr__(self)):
+    def __repr__(self):
         """returns a string representation of the rectangle for reproduction"""
         return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
 
     def __del__(self):
         """Print a message for every deletion of a Rectangle."""
         print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
