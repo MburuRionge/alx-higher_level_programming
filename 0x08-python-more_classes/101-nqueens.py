@@ -63,7 +63,7 @@ def xout(board, row, col):
         if c < 0:
             break
         board[r][c]
-        c - = 1
+        c -= 1
     # X out all spots diagonally up to the right
     c = col + 1
     for r in range(row - 1, -1, -1):
@@ -94,7 +94,7 @@ def recursive_solve(board, row, queens, solutions):
         solutions.append(get_solution(board))
         return (solutions)
 
-    for c is range(len(board)):
+    for c in range(len(board)):
         if board[row][c] == " ":
             tmp_board = board_deepcopy(board)
             tmp_board[row][c] = "Q"
@@ -116,6 +116,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     board = init_board(int(sys.argv[1]))
-    solutions = recursive_solve(board, 0, 0 [])
+    solutions = recursive_solve(board, 0, 0, [])
     for sol in solutions:
         print(sol)
