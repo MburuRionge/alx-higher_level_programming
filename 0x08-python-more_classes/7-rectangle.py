@@ -3,15 +3,13 @@
 
 
 class Rectangle:
-    """Represent a rectangle.
-
-    Attributes:
-        number_of_instances (int): The number of Rectangle instances.
-        print_symbol (any): The symbol used for string representation.
-    """
+    """Represent a rectangle."""
 
     number_of_instances = 0
+    """the number of active instances."""
+
     print_symbol = "#"
+    """print symbol, an be of any type"""
 
     def __init__(self, width=0, height=0):
         """Initialize a new Rectangle.
@@ -59,19 +57,18 @@ class Rectangle:
         """returns the perimeter of the rectangle"""
         if not self.width or not self.height:
             return 0
-        return (self.__width * 2) + (self.__height * 2)
+        return (self.__width + self.__height) * 2
 
     def __str__(self):
         """returns printable string representation of the recrangle"""
-        string = ""
-        if self.__width != 0 and self.__height != 0:
-            string += "\n".join("#" * self.__width
-                                for j in range(self.__height))
-        return string
+        if not self.width or not self.height:
+            return ""
+        return ((str(self.print_symbol) * self.width + "\n") *
+                self.height)[:-1]
 
     def __repr__(self):
         """returns a formal string representation of the rectangle"""
-        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+        return "Rectangle(" + str(self.width) + ", " + str(self.height) + ")"
 
     def __del__(self):
         """Print a message for every deletion of a Rectangle."""
