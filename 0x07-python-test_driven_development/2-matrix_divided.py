@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-def matri_divided(matrix, div):
+def matrix_divided(matrix, div):
     """Divide all elements of a matrix.
 
     Args:
