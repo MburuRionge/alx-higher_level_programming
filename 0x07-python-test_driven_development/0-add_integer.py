@@ -1,16 +1,16 @@
-#!usr/bin/python3
+#!/usr/bin/python3
+"""Module containing a dummy adder function for testing"""
 
 
 def add_integer(a, b=98):
-    """Return the integer addition of a and b.
-
-    Float arguments are typecasted to ints before addion is performed.
-
-    Raises:
-        TypeError: If either of a or b is a non-integer and non-float.
+    """ adds integers
+        Arguments:
+        @a: first integer
+        @b: second integer, defaults to 98 if not given
     """
-    if ((not isinstance(a, int) and not isinstance(a, float))):
+
+    if type(a) not in [int, float]:
         raise TypeError("a must be an integer")
-    if ((not isinstance(b, int) and not isinstance(b, float))):
+    if type(b) not in [int, float]:
         raise TypeError("b must be an integer")
-    return (int(a) + int(b))
+    return int(a) + int(b)
