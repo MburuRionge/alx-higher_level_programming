@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """A script that lists states"""
 import MySQLdb
+import sys
 
 
 def main(argv):
@@ -13,13 +14,13 @@ def main(argv):
 
     cur = db.cursor()
     cur.execute('SELECT * FROM states ORDER BY id ASC')
+    row = cur.fetchall()
+    for r in row:
+        print(r)
 
-    for row in cur.fetchall():
-        print(row)
-
+    cur.close()
     db.close()
 
 
 if __name__ == '__main__':
-    from sys import argv
     main(argv)
