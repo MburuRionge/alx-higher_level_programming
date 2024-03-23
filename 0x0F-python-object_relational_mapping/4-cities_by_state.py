@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''Function that filters by user input'''
 import MySQLdb
-from sys import argv
+import sys
 
 
 def main(argv):
@@ -10,8 +10,13 @@ def main(argv):
         print('Incorrect number of arguments')
         return
 
-    db = MySQLdb.connect(host='localhost', user=argv[1],
-                         passwd=argv[2], db=argv[3], port=3306)
+    db = MySQLdb.connect(
+            host='localhost',
+            user=argv[1],
+            passwd=argv[2],
+            db=argv[3],
+            port=3306
+    )
     cur = db.cursor()
     cur.execute('SELECT cities.id, cities.name, states.name \
     FROM cities \
@@ -24,4 +29,4 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    main(argv)
+    main(sys.argv)

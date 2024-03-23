@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """lists all states from database hbtn_0e_0_usa starting with N"""
-from sys import argv
+import sys
 import MySQLdb
 
 
@@ -10,11 +10,13 @@ def main(argv):
         print("Must enter 4 arguments")
         return
 
-    db = MySQLdb.connect(host="localhost",
-                         user=argv[1],
-                         passwd=argv[2],
-                         db=argv[3],
-                         port=3306)
+    db = MySQLdb.connect(
+            host="localhost",
+            user=argv[1],
+            passwd=argv[2],
+            db=argv[3],
+            port=3306
+    )
     cur = db.cursor()
     cur.execute(
         "SELECT cities.name\
@@ -39,4 +41,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(argv)
+    main(sys.argv)
