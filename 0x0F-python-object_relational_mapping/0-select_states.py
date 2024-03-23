@@ -9,9 +9,14 @@ if __name__ == '__main__':
     if len(sys.argv) != 5:
         print("Incorrect number of arguments")
         sys.exit(1)
-
-    db = MySQLdb.connect(host='localhost', user=argv[1],
-                            passwd=argv[2], db=argv[3], port=3306)
+00000
+    db = MySQLdb.connect(
+            host='localhost',
+            user=argv[1],
+            passwd=argv[2],
+            db=argv[3],
+            port=3306
+    )
 
     cur = db.cursor()
     cur.execute('SELECT * FROM states ORDER BY id ASC')
