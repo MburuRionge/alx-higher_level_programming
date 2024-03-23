@@ -6,7 +6,7 @@ import sys
 
 if __name__ == '__main__':
     """check if number of arguments provided is enough."""
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 5:
         print("Incorrect number of arguments")
         sys.exit(1)
 
