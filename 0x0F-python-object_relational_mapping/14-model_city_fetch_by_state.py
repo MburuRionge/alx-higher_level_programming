@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """List objects that contain the letter a """
-from sys import argv
+import sys
 from model_state import Base, State
 from model_city import City
 from sqlalchemy import (create_engine)
@@ -11,7 +11,11 @@ def main(argv):
 
     engine = create_engine(
         'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
-            argv[1], argv[2], argv[3]), pool_pre_ping=True)
+            argv[1],
+            argv[2],
+            argv[3]
+        ), pool_pre_ping=True
+    )
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
 
@@ -25,4 +29,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(argv)
+    main(sys.argv)
