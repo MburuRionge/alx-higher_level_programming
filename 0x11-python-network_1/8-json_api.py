@@ -7,26 +7,20 @@ formatted and not empty, display the id and name like this: [<id>] <name>
 Otherwise: Display Not a valid JSON if the JSON is invalid or 
 Display No result if the JSON is empty
 """
+import sys
 import requests
 
 
-def main(args):
-    if len(args) == 1:
-        data = {}
-    else:
-        data = {'q': args[1]}
+if __name__ == "__main__":
+    letter = "" if len(sys.argv) == 1 else sys.argv[1]
+    payload = {"q": letter}
 
-    r = requests.post( 'http://0.0.0.0:5000/search_user', data=data)
+    r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
     try:
-        json_data = r.json()
-        if json_data:
-            print('[{}] {}'.format(json_data['id'], json_data['name'])
+        response = r.json()
+        if response == {}:
+            print("No result")
         else:
-            print('No result')
+            print("[{}] {}".format(response.get("id"), response.get("name")))
     except ValueError:
-        print('Not a valid JSON')
-
-
-if __name__ == '__main__':
-    import sys
-    main(sys.argv)
+        print("Not a valid JSON")
