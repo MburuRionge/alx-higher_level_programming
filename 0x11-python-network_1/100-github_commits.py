@@ -9,10 +9,14 @@ def main(args):
     url = 'https://developer.github.com/v3/repos/commits/'
 
     r = requests.post(url, data=(repository_name, owner_name))
+    commits = r.json()
     try:
-        commits = r.json()
-        print(commits.post('sha'":" 'author name'))
-    except ValueError:
+
+        for i in range(10):
+        print("{}: {}".format(
+            commits[i].get("sha"),
+            commits[i].get("commit").get("author").get("name")))
+    except IndexError:
         pass
 
 
