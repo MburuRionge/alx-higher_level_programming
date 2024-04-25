@@ -1,15 +1,17 @@
 #!/usr/bin/node
-'use strict';
+/*
+prints title of a Star Wars movie
+*/
 const request = require('request');
 
-request('https://swapi.dev/api/films/' + process.argv[2], { json: true }, function (error, response, body) {
-  if (error) {
-    console.error('Error:', error);
+let id = process.argv[2];
+let url = 'http://swapi.co/api/films/' + id;
+
+request(url, function (err, res, body) {
+  if (err) {
+    console.log(err);
   } else {
-    if (response.statusCode === 200) {
-      console.log(body.title);
-    } else {
-      console.error('Failed with status code:', response.statusCode);
-    }
+    let json = JSON.parse(body);
+    console.log(json.title);
   }
 });

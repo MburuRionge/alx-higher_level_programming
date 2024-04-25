@@ -3,13 +3,17 @@
 const fs = require('fs');
 const request = require('request');
 
-request(process.argv[2], { json: true }, function (e, r, b) {
-  if (e) console.log(e); else if (r.statusCode === 200) {
-    const count = {};
-    b.forEach(t => {
-      if (count[t.userId] === undefined) count[t.userId] = 0;
-      if (t.completed === true) count[t.userId]++;
-    });
-    console.log(count);
-  }
+request(process.argv[2], { json: true }, function (erro, response, body)
+{
+	if (error) {
+		console.log(error);
+	}
+	else if (response.statusCode === 200) {
+		const count = {};
+		body.forEach(task => {
+			if (count[task.userId] === undefined) count[task.userId] = 0;
+			if (task.completed === true) count[task.userId]++;
+		});
+	console.log(count);
+	}
 });
