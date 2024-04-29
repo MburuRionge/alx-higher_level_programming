@@ -4,24 +4,25 @@ Prints the characters of a Star Wars movie
 */
 const request = require('request');
 
-let url = process.argv[2];
+const movieId = process.argv[2];
+const apiUrl = 'https://swapi.dev/api/films/${movieId}/';
 
-request(url, function (err, res, body) {
-	if (err) {
-		console.error(err);
-	} else {
-		let results = {};
-		let json = JSON.parse(body);
-		for (let i = 0; i < json.length; i++) {
-			let task = json[i];
-			if (task['completed'] === true) {
-				if (results[task['userId']] !== undefined) {
-					results[task['userId']] += 1;
+request(apiurl, function (error, response, body) {
+	if (!error && response.statusCode === 200 {
+		// parse the json response body
+		const movieData = JSON.parse(body);
+		console.log('Characters of "${movieData.title}":');
+		movieData.characters.forEach((characterUrl) => {
+			request(characterUrl, function (charError, charResponse, charBody) {
+				if (!charError && charResponse.statusCode === 200) {
+					const characterData = JSON.parse(charBody);
+					console.log(characterData.name);
 				} else {
-					results[task['userId']] = 1;
+					console.error('Error fetching character data:', charError);
 				}
-			}
-		}
-		console.log(results);
+			});
+		});
+	} else {
+		console.error('Error fetching movie data:', error);
 	}
 });

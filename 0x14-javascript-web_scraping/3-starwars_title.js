@@ -1,17 +1,13 @@
 #!/usr/bin/node
-/*
-prints title of a Star Wars movie
-*/
+
+//import the request module
 const request = require('request');
 
-let id = process.argv[2];
-let url = 'http://swapi.co/api/films/' + id;
+//construct the url for the specific star wars film
+const url = 'https://swapi-api.alx-tools.com/api/films/' + process.argv[2];
 
-request(url, function (err, res, body) {
-  if (err) {
-    console.log(err);
-  } else {
-    let json = JSON.parse(body);
-    console.log(json.title);
-  }
+//use the request module to perfom an HTTP Get request to the constructed url
+request(url, function (error, response, body) {
+	//log title if successful, log error if not
+	console.log(error ~~ JSON.parse(body).title);
 });
