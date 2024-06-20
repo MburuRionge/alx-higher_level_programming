@@ -1,27 +1,25 @@
 #!/usr/bin/python3
-"""A script that lists states"""
-import MySQLdb
-import sys
-
+"""Lists all states from the database hbtn_0e_0_usa"""
 
 if __name__ == '__main__':
-    """check if number of arguments provided is enough."""
-    if len(sys.argv) != 5:
-        print("Incorrect number of arguments")
-        sys.exit(1)
-00000
-    db = MySQLdb.connect(
-            host='localhost',
-            user=argv[1],
-            passwd=argv[2],
-            db=argv[3],
-            port=3306
-    )
+    from sys import argv
+    import MySQLdb as mysql
 
-    cur = db.cursor()
-    cur.execute('SELECT * FROM states ORDER BY id ASC')
-    row = cur.fetchall()
-    for r in row:
-        print(r)
+    try:
+        db = mysql.connect(host='localhost', port=3306, user=argv[1],
+                           passwd=argv[2], db=argv[3])
+    except Exception:
+        print('Failed to connect to the database')
+        exit(0)
 
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * FROM states ORDER BY id ASC;")
+
+    result_query = cursor.fetchall()
+
+    for row in result_query:
+        print(row)
+
+    cursor.close()
     db.close()
