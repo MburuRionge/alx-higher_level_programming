@@ -1,6 +1,3 @@
 #!/usr/bin/python3
-
-def remove_char_at(str, n):
-    if n < 0:
-        return (str)
-    return (str[:n] + str[n+1:])
+for ch in reversed(range(97, 123)):
+    print("{:c}".format(ch if (ch % 2 == 0) else (ch - 32)), end='')

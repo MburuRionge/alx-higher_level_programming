@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""Print the alphabet in lowercase. not followed by a new line."""
-
-for letter in range(97, 123):
-    print("{}".format(chr(letter)). end="")
+def magic_calculation(a, b, c):
+    if a < b:
+        return c
+    else:
+        if c > b:
+            return a + b
+    return (a * b) - c
